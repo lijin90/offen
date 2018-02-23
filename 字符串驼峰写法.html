@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var s='aa-bb-cc-dd';
+    var a= s.split('-');
+    for(var i=1;i< a.length;i++){
+        a[i]=a[i].substr(0,1).toUpperCase()+a[i].substr(1);
+//        console.log(a[i]);
+    }
+    var sa= a.join('-');
+    console.log(sa);
+//    function combo(msg){
+//        var arr=msg.split("-");   //split("-")以-为分隔符截取字符串，返回数组
+//        for(var i=1;i<arr.length;i++){
+//            arr[i]=arr[i].charAt(0).toUpperCase()+arr[i].substr(1,arr[i].length-1);
+////            console.log(arr[i]);
+//        }
+//        msg=arr.join("");          //join()加入什么，连接数组元素，返回字符串
+//        console.log(msg);
+//        return msg;
+//    }
+//    foo="get-element-by-id";
+//    combo(foo);
+//    alert(combo(foo));
+</script>
+</body>
+</html>
