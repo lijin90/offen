@@ -107,11 +107,11 @@
 //
 //        })
         $(window).scroll(function () {
-            var s = $(window).scrollTop();
-            var h = $(window).height();
-            var d = $(document).height();
+            var s = $(window).scrollTop();//窗口滚动的高度
+            var h = $(window).height();//窗口的高度
+            var d = $(document).height();//元素的高度
             var html='';
-            if(s+h==d){
+            if(s+h==d){//
                 $.ajax({
                     url:"tsconfig.json",
                     dataType:"json",
