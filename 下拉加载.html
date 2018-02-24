@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+    <script src="jquery.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            line-height: initial;
+        }
+
+        body {
+            font-size: 0.32rem;
+        }
+
+        ul li {
+            line-height: 40px;
+            overflow: hidden;
+            font-size: 0.40rem;
+        }
+        div{
+            max-width: 750px;
+            min-width: 320px;
+            margin:0 auto;
+            background: #eee;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <ul>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+    </ul>
+</div>
+</body>
+<script>
+    ;
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if (clientWidth >= 750) {//750这个值，根据设计师的psd宽度来修改，是多少就写多少，现在手机端一般是750px的设计稿，如果设计师给的1920的psd，自己用Photoshop等比例缩小
+                        docEl.style.fontSize = '100px';
+                    } else {
+                        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';//750这个值，根据设计师的psd宽度来修改，是多少就写多少，现在手机端一般是750px的设计稿，如果设计师给的1920的psd，自己用Photoshop等比例缩小
+                    }
+                };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+    jQuery(function ($) {
+//        $(window).scroll(function () {
+//            var s = $(window).scrollTop();
+//            var h = $(window).height();
+//            var d = $(document).height();
+//            var html='';
+//            if(s+h==d){
+//                console.log(1);
+//                html+='<p>0000</p>';
+//            }else{
+//                html+='<p></p>';
+//            }
+//            $('div').append(html);
+//
+//        })
+        $(window).scroll(function () {
+            var s = $(window).scrollTop();
+            var h = $(window).height();
+            var d = $(document).height();
+            var html='';
+            if(s+h==d){
+                $.ajax({
+                    url:"tsconfig.json",
+                    dataType:"json",
+                    type:"get",
+                    success:function(res){
+                        if(res.ret==200){
+                            for(var i in res.data){
+                                console.log(res.data[i].name);
+                                html+='<p>'+res.data[i].name+'</p>'
+                                $('div').append(html);
+                            }
+                        }
+                    }
+                })
+            }
+
+        })
+    });
+</script>
+</html>
