@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1.原始模式，Object构造函数方式
+//    var person = new Object();//创建一个对象
+//    person.name = 'Jack';
+//    person.age = 18;
+//    person.sayName = function () {//创建一个方法
+//        alert(this.name);
+//    };
+//    person.sayName();
+
+
+//    2工厂模式
+//    function factory(name, url){
+//        var f=new Object();
+//        f.name=name;
+//        f.url=url;
+//        f.say=function(){
+//            alert(this.name)
+//        }
+//        return f
+//    }
+//    var fc=factory('wuyuchang', 'http://www.jb51.net/');
+//    var fc2=factory('wuyuchang2', 'http://www.jb51.net/');
+//    fc.say();
+//    fc2.say();
+
+//    3构造函数
+//    function han(name,age){
+    //        this.name=name;
+    //        this.age=22;
+    //        this.han=function(){
+    //            alert(this.name+this.age);
+    //        }
+    //    }
+    //    var hs=new han('李金',22);
+    //    hs.han();
+
+
+    //4.原型模式，字面量定义方式
+//    function Person () {}
+//    Person.prototype = {
+//        name: 'Jack',
+//        age: 18,
+//        sayName: function () { alert(this.name); }
+//    };
+//    var p1 = new Person(); //name='Jack'
+//    var p2 = new Person(); //name='Jack'
+//    p1.sayName();
+//    p2.sayName();
+
+//    5.原型模式
+//    function Person () {}
+//    Person.prototype.name = 'Jack';
+//    Person.prototype.age = 18;
+//    Person.prototype.sayName = function () { alert(this.name); };
+//    var Person1=new Person();
+//    var Person2=new Person();
+//    Person1.sayName();
+//    Person2.sayName();
+
+
+//    6.完善原型
+    function cat(name,age){
+        this.name=name;
+        this.age=age;
+    }
+    cat.prototype.sayname=function(){
+        alert(this.name+this.age);
+    }
+    var cat1=new cat("李金",22);
+    var cat2=new cat("李金2",2222);
+    cat1.sayname();
+    cat2.sayname();
+</script>
+</body>
+</html>
