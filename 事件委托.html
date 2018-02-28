@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src='jquery.js'></script>
+</head>
+<body>
+    <ul>
+        <li>123</li>
+        <li>1234</li>
+        <li>1235</li>
+        <li>1236</li>
+        <li>1237</li>
+    </ul>
+    <script>
+        jQuery(function($){
+            $('ul').click(function(e){
+                var target= e.target;
+                if($(target).is('li')){
+                    alert($(target).text());
+                }
+            })
+        })
+    </script>
+</body>
+</html>
