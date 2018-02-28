@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+</head>
+<body>
+<div></div>
+<script>
+    jQuery(function($){
+//        $.ajax({
+//            //请求方式
+//            type:"GET",
+//            //文件位置
+//            url:"data.json",
+//            //返回数据格式为json,也可以是其他格式如
+//            dataType: "json",
+//            //请求成功后要执行的函数，拼接html
+//            success: function(data){
+//                var str="<ul>";
+//                $.each(data,function(i,n){
+//                    str+="<li>"+"ID："+n.id+"</li>";
+//                    str+="<li>"+"标题："+n.title+"</li>";
+//                    str+="<li>"+"地址："+n.url+"</li>";
+//                });
+//                str+="</ul>";
+//                $("div").append(str);
+//            }
+//        });
+        $.ajax({
+            //请求方式
+            type:"GET",
+            //文件位置
+            url:"data.json",
+            //返回数据格式为json,也可以是其他格式如
+            dataType: "json",
+            //请求成功后要执行的函数，拼接html
+            success: function(data){
+                var str='<ul>';
+               for (var i in data){
+//                   console.log(data[i].id);
+                   str+="<li>"+"ID："+data[i].id+"</li>";
+//                    str+="<li>"+"标题："+data[i].title+"</li>";
+//                    str+="<li>"+"地址："+data[i].url+"</li>";
+               }
+                str+='</ul>'
+                $('div').append(str)
+            }
+        });
+        var json = [{dd:'SB',AA:'东东',re1:123},{cccc:'dd',lk:'1qw'}];
+        for(var i=0,l=json.length;i<l;i++){
+//            console.log(i+':'+json[i]);
+            for(var key in json[i]){
+                console.log(key+':'+json[i][key]);
+            }
+        }
+    })
+</script>
+</body>
+</html>
