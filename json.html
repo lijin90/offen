@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script src="phone.js"></script>
+    <style>
+        *{
+            margin:0;
+        }
+        html{
+            line-height: initial;
+        }
+        body{
+            font-size: 0.32rem;
+            max-width: 750px;
+            min-width: 320px;
+            margin: 0 auto;
+        }
+        p span{
+            padding:0px 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="module">
+        <div class="con"></div>
+    </div>
+</div>
+<script>
+    jQuery(function($){
+        $.ajax({
+            url:"d.json",
+            type:"get",
+            dataType:"json",
+            success:function(res){
+//                console.log(res.msg);
+                $('.module .con').empty();
+                if(res.ret==200){
+                    $.each(res.data,function(i,n){
+                        var str='<ul>'
+//                        $('.module .con').append('<h1>'+n.index+'</h1>');
+                        str+='<h1>'+n.index+'</h1>';
+                        $.each(res.data[i].users,function(j,val){
+                            str+='<p>'+'<span>'+val.name+'</span>'+'<span>'+val.tel+'</span>'+'</p>';
+//                            $('.module .con').append('<p>'+'<span>'+val.name+'</span>'+'<span>'+val.tel+'</span>'+'</p>');
+//                            $('.module .con').append($('<ul></ul>').append('<p>'+'<span>'+val.name+'</span>'+'<span>'+val.tel+'</span>'+'</p>'))
+                        })
+                        str+='</ul>'
+                        $('.module .con').append(str)
+                    });
+                }else{
+                    console.log(res.msg);
+                }
+            },
+            error: function( XMLHttpRequest, textStatus )
+            {
+                alert( XMLHttpRequest.status );
+                alert( XMLHttpRequest.readyState );
+                alert( textStatus );
+            }
+        });
+        $('.con').click(function(e){
+        var target= e.target;
+            if($(target).is('h1')){
+                console.log($(target).text());
+                $('p').css('color','red');
+            }
+        })
+    });
+</script>
+</body>
+</html>
