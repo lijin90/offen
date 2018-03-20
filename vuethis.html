@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+</head>
+<body>
+<p class="city">    切换城市：
+    <a href="#" v-on:click="changeCity($event)" v-for="item in choices">
+        {{item.cities}}
+    </a>
+</p>
+<script>
+    var city = new Vue({
+        el:'.city',
+        data:{
+            choices:[
+                {cities:'北京'},
+                {cities:'上海'},
+                {cities:'福州'},
+                {cities:'广州'},
+                {cities:'青岛'}
+            ]
+        },
+        methods:{
+            changeCity:function(e){
+                $(e.target).css('color','red').siblings().css('color','');
+            }
+        }
+
+    });
+</script>
+</body>
+</html>
